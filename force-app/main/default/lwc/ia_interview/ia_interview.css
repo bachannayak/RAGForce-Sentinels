@@ -1,0 +1,241 @@
+.slds-modal__container {
+    max-width: 80rem; /* Increased max-width */
+    width: 70%;      /* Set a relative width */
+}
+
+.security-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: transparent;
+    z-index: 99999;
+    pointer-events: none; /* Changed to none to allow interaction with elements below */
+}
+
+.fullscreen-modal {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    z-index: 9000;
+    background: #000;
+}
+
+.fullscreen-backdrop {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    background-color: rgba(0, 0, 0, 0.9) !important;
+    z-index: 9998;
+}
+
+.modal-container {
+    position: relative;
+    width: 100% !important;
+    height: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    z-index: 9001;
+}
+
+.slds-modal__header {
+    position: relative;
+    z-index: 9002;
+    padding: 1rem;
+    background: #fff;
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.slds-modal__content {
+    position: relative;
+    z-index: 9002;
+    height: calc(100vh - 116px);
+    padding: 1rem;
+}
+
+.modal-main-area {
+    display: flex;
+    height: 100%;
+    gap: 1rem;
+}
+
+.video-area {
+    flex: 1;
+    position: relative;
+    background: #000;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.video-stream {
+    width: 100%;
+    height: calc(100% - 80px);
+    object-fit: contain;
+}
+
+.button-container {
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1.5rem 1rem 1rem 1rem;
+    background: rgba(0, 0, 0, 0.85);
+    border-radius: 12px;
+    z-index: 9003;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+}
+
+.control-button,
+.footer-button {
+    position: relative;
+    z-index: 9004;
+}
+
+.chat-area {
+    flex: 1;
+    background: #fff;
+    border-radius: 4px;
+    padding: 1rem;
+    overflow-y: auto;
+}
+
+.transcript-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.chat-bubble {
+    padding: 0.75rem;
+    border-radius: 10px;
+    max-width: 85%;
+}
+
+.user-bubble {
+    background-color: #e0f7fa;
+    margin-left: auto;
+    border-bottom-right-radius: 0;
+}
+
+.agent-bubble {
+    background-color: #f1f1f1;
+    margin-right: auto;
+    border-bottom-left-radius: 0;
+}
+
+.slds-modal__footer {
+    position: relative;
+    z-index: 9002;
+    padding: 1rem;
+    background: #fff;
+}
+
+/* Remove any pointer-events: none that might interfere with buttons */
+.fullscreen-modal *,
+.modal-container *,
+.video-area *,
+.chat-area * {
+    pointer-events: auto;
+}
+
+/* Ensure buttons are always clickable */
+lightning-button,
+lightning-button-icon {
+    pointer-events: auto !important;
+    cursor: pointer !important;
+}
+
+/* Style improvements for buttons */
+.control-button {
+    --slds-c-button-brand-color-background: rgb(0, 112, 210);
+    --slds-c-button-brand-color-background-hover: rgb(0, 95, 178);
+    --slds-c-button-brand-color-border: rgb(0, 112, 210);
+    --slds-c-button-brand-color-border-hover: rgb(0, 95, 178);
+}
+
+/* Global security measures but allow button interactions */
+* {
+    -webkit-touch-callout: none !important;
+    -webkit-user-select: none !important;
+    -khtml-user-select: none !important;
+    -moz-user-select: none !important;
+    -ms-user-select: none !important;
+    user-select: none !important;
+    -webkit-user-drag: none !important;
+    -khtml-user-drag: none !important;
+    -moz-user-drag: none !important;
+    -o-user-drag: none !important;
+    user-drag: none !important;
+}
+
+/* Prevent right-click */
+video, .video-area, .chat-area, .modal-container, .fullscreen-modal {
+    -webkit-touch-callout: none !important;
+    -webkit-user-drag: none !important;
+    -khtml-user-drag: none !important;
+    -moz-user-drag: none !important;
+    -o-user-drag: none !important;
+    user-drag: none !important;
+}
+
+/* Prevent selection globally */
+.fullscreen-modal *,
+.security-overlay * {
+    -webkit-user-select: none !important;
+    -moz-user-select: none !important;
+    -ms-user-select: none !important;
+    user-select: none !important;
+    -webkit-touch-callout: none !important;
+    -webkit-user-drag: none !important;
+}
+
+/* Hide scrollbars */
+ .fullscreen-modal ::-webkit-scrollbar {
+    display: none !important;
+}
+
+.fullscreen-modal {
+    -ms-overflow-style: none !important;
+    scrollbar-width: none !important;
+} 
+
+/* Additional button styles for better visibility */
+.video-control-button {
+    background-color: rgba(0, 112, 210, 0.9) !important;
+    border-radius: 4px !important;
+    margin: 0 0.5rem !important;
+}
+
+.video-control-button:hover {
+    background-color: rgba(0, 112, 210, 1) !important;
+    transform: translateY(-1px) !important;
+    transition: all 0.2s ease !important;
+}
+
+.language-dropdown {
+    width: 220px;
+    min-width: 180px;
+    background: #fff;
+    border-radius: 6px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    font-size: 1rem;
+}

@@ -1,0 +1,23 @@
+<template>
+    <div class="file-uploader">
+        <div class="file-selection">
+            <lightning-input 
+                type="checkbox" 
+                label="Select a file to upload"
+                onchange={handleCheckboxChange}>
+            </lightning-input>
+            <input type="file" style="display:none" onchange={handleFileChange}>
+        </div>
+        
+        <template if:true={selectedFileName}>
+            <div class="selected-file">
+                <p>Selected file: {selectedFileName}</p>
+                <lightning-button 
+                    label="Upload File" 
+                    onclick={handleUpload}
+                    variant="brand">
+                </lightning-button>
+            </div>
+        </template>
+    </div>
+</template>

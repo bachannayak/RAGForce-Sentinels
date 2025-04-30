@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>All</fullName>
+    <columns>NAME</columns>
+    <columns>Available_for_Immediate_Joining__c</columns>
+    <columns>Certifications__c</columns>
+    <columns>Company_Name__c</columns>
+    <columns>Degree__c</columns>
+    <columns>Designation__c</columns>
+    <columns>Duration__c</columns>
+    <columns>Eligible_for_HR__c</columns>
+    <columns>Eligible_for_L1__c</columns>
+    <columns>Eligible_for_L2__c</columns>
+    <columns>Email__c</columns>
+    <filterScope>Everything</filterScope>
+    <label>All Records</label>
+</ListView>
