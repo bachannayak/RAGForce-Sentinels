@@ -14,11 +14,12 @@
 public class TranslationUtil {
     public static String translateText(String text, String targetLang) {
         try {
+            APi_Key__mdt key= [Select Bearer_Token__c from APi_Key__mdt where DeveloperName= 'Translation_Key' limit 1];
             HttpRequest req = new HttpRequest();
             req.setEndpoint('https://api.openai.com/v1/chat/completions');
             req.setMethod('POST');
             req.setHeader('Content-Type', 'application/json');
-            req.setHeader('Authorization', 'Bearer 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'); // Masked for security
+            req.setHeader('Authorization', key.Bearer_Token__c); // Masked for security
             req.setTimeout(10000);
 
             Map<String, Object> payload = new Map<String, Object>{
