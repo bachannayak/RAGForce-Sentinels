@@ -1,18 +1,35 @@
 public with sharing class SchedulerAgentController {
     @AuraEnabled
-    public static String invokeAgent(String userMessage, List<Map<String, String>> context) {
+    public static String invokeAgent(String userMessage) {
         try {
-            // Call the existing Scheduler Agent
-            // Replace this with your actual agent invocation method
-            String response = callExistingSchedulerAgent(userMessage, context);
-            
-            return response;
-        } catch (Exception e) {
-            throw new AuraHandledException('Error invoking agent: ' + e.getMessage());
-        }
+         
+           // Create an instance of the invocable action with type ‘generateAiAgentResponse’ and name ‘Agentforce_Service_Agent_new’
+           Invocable.Action action = Invocable.Action.createCustomAction('generateAiAgentResponse', 'Scheduler_Agent');
+          
+           action.setInvocationParameter('userMessage', userMessage);
+          
+           // Execute the action
+           List<Invocable.Action.Result> results = action.invoke();
+           Invocable.Action.Result result = results[0];
+
+           // Handle the response
+           if (result.isSuccess()) {
+               // Retrieve the Session id and Agent Response
+               System.debug('Output Session Id: ' + result.getOutputParameters().get('sessionId'));
+               System.debug('Output Agent Response: ' + result.getOutputParameters().get('agentResponse'));
+
+           } else {
+               System.debug('Java action execution failed: ' + result.getErrors());
+           }
+            return JSON.serialize(result.getOutputParameters().get('agentResponse'));
+       } catch (Exception e) {
+           System.debug('Error invoking Java action: ' + e.getMessage());
+           return 'Error in fetching response from agent';
+       }
+        
     }
     
-    private static String callExistingSchedulerAgent(String userMessage, List<Map<String, String>> context) {
+    /*private static String callExistingSchedulerAgent(String userMessage, List<Map<String, String>> context) {
         // TODO: Replace with your actual agent invocation logic
         // This should call your existing Scheduler Agent in your org
         // For example:
@@ -20,5 +37,5 @@ public with sharing class SchedulerAgentController {
         
         // For now, return a placeholder response
         return 'Scheduler Agent: I received your message: "' + userMessage + '". How can I help you with scheduling?';
-    }
+    }*/
 }

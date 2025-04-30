@@ -6,7 +6,7 @@ import checkEligibility from '@salesforce/apex/InterviewAgentHandler.checkEligib
 import USER_ID from '@salesforce/user/Id';
 
 
-export default class VideoModal extends LightningElement {
+export default class Ia_interview extends LightningElement {
     @api 
     get recordId() {
         return this._recordId || this.currentUserId;
@@ -38,7 +38,10 @@ export default class VideoModal extends LightningElement {
     @track lastActiveTime = Date.now();
     @track inactivityTimeout;
     @track isEligibleForInterview = false;
+    @track showFaceValidation;
     @track selectedLanguage = '';
+    @track showinterviewbuttonflag;
+    @track showerrorvalidation;
     @track availableLanguages = [
         { label: 'English', value: 'en' },
         { label: 'Spanish', value: 'es' },
@@ -112,6 +115,19 @@ export default class VideoModal extends LightningElement {
         ['contextmenu', 'copy', 'paste', 'cut', 'selectstart', 'dragstart'].forEach(eventType => {
             document.addEventListener(eventType, preventDefaultHandler, true);
         });
+    }
+    openVerificationModal(){
+        this.showFaceValidation = true;
+
+    }
+    showinterviewbutton(event){
+        this.showinterviewbuttonflag = event.detail;
+        if(this.showinterviewbuttonflag ===false){
+            this.showerrorvalidation= true;
+        }
+        else{
+        this.showFaceValidation = false;
+        }
     }
 
     handleSecurityViolation() {

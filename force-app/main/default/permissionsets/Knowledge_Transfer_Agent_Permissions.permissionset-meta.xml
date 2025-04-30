@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Allows custom permissions for Agentforce Agent : Knowledge_Transfer_Agent&apos;s agent user : knowledge_transfer_agent@00ddl00000oobcc.ext.</description>
+    <hasActivationRequired>false</hasActivationRequired>
+    <label>Knowledge_Transfer_Agent Permissions</label>
+    <license>Einstein Agent</license>
+</PermissionSet>

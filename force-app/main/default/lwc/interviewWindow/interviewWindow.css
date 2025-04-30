@@ -1,0 +1,14 @@
+.camera-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px dashed #ddd;
+    padding: 10px;
+    border-radius: 6px;
+}
+
+
+video {
+    width: 100%;
+    border: 2px solid #cccccc;
+}

@@ -1,0 +1,22 @@
+<template>
+    <lightning-card title="Interview Verification">
+        <div class="slds-p-around_medium">
+            <h3 class="slds-text-heading_small">Welcome to your Interview</h3>
+            <p>Please ensure you are in a well-lit environment for face verification.</p>
+            <p>Follow the instructions to capture your current photo for identity verification.</p>
+
+            <!-- Camera Preview -->
+            <div class="camera-container slds-m-vertical_medium">
+                <video id="video" width="100%" height="auto" autoplay></video>
+            </div>
+
+            <!-- Capture Button -->
+            <lightning-button 
+                label="Capture Photo" 
+                onclick={handleCapture} 
+                class="slds-m-top_medium"
+                variant="brand">
+            </lightning-button>
+        </div>
+    </lightning-card>
+</template>

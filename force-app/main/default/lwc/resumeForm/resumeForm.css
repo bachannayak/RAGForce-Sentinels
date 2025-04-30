@@ -1,3 +1,15 @@
-.custom-container{
-	color : black;
+.section-header {
+   font-size: 1.2rem;
+   font-weight: bold;
+   margin-top: 1.5rem;
+   margin-bottom: 0.75rem;
+   color: #2a2a2a;
+   border-bottom: 1px solid #d8dde6;
+   padding-bottom: 0.3rem;
+}
+.custom-form lightning-input,
+.custom-form lightning-textarea,
+.custom-form lightning-combobox,
+.custom-form lightning-button {
+   margin-bottom: 1rem;
 }

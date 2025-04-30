@@ -1,3 +1,39 @@
 <template>
-
+<lightning-card title="Resume Submission Form">
+<div class="slds-p-around_medium">
+<lightning-input label="LinkedIn URL" value={linkedin} onchange={handleChange} name="linkedin"></lightning-input>
+<lightning-button label="Fetch Details" onclick={fetchLinkedInDetails} class="slds-m-bottom_medium"></lightning-button>
+<lightning-input label="Full Name" value={fullName} onchange={handleChange} name="fullName"></lightning-input>
+<lightning-input label="Email" type="email" value={email} onchange={handleChange} name="email"></lightning-input>
+<lightning-input label="Phone" type="tel" value={phone} onchange={handleChange} name="phone"></lightning-input>
+<lightning-input label="Years of Experience" type="number" value={experience} onchange={handleChange} name="experience"></lightning-input>
+<lightning-input label="Primary Skills" value={primarySkills} onchange={handleChange} name="primarySkills"></lightning-input>
+<lightning-input label="Secondary Skills" value={secondarySkills} onchange={handleChange} name="secondarySkills"></lightning-input>
+<lightning-input type="checkbox" label="Willing to Relocate" checked={willingToRelocate} onchange={handleCheckboxChange} name="willingToRelocate"></lightning-input>
+<lightning-input label="Expected Salary" type="number" value={expectedSalary} onchange={handleChange} name="expectedSalary"></lightning-input>
+<lightning-textarea label="Education" value={education} onchange={handleChange} name="education"></lightning-textarea>
+<lightning-textarea label="Work Experience" value={workExperience} onchange={handleChange} name="workExperience"></lightning-textarea>
+<lightning-input label="Preferred Location" value={location} onchange={handleChange} name="location"></lightning-input>
+<lightning-combobox
+               label="Role"
+               value={role}
+               options={roleOptions}
+               onchange={handleChange}
+               name="role">
+</lightning-combobox>
+<lightning-textarea label="Professional Summary" value={summary} onchange={handleChange} name="summary"></lightning-textarea>
+<div class="slds-m-top_medium">
+<lightning-button variant="brand" label="Submit" onclick={handleSubmit}></lightning-button>
+</div>
+<template if:true={resumeId}>
+    <lightning-file-upload
+                    label="Upload Candidate Image"
+                    name="fileUploader"
+                    record-id={resumeId}
+                    accept=".jpg,.jpeg,.png"
+                    onuploadfinished={handleUploadFinished}>
+    </lightning-file-upload>
+</template>
+</div>
+</lightning-card>
 </template>
